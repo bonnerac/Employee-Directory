@@ -13,9 +13,13 @@ class Table extends React.Component {
 
     searchEmployees = () => {
         API.randomEmployee()
-            .then(res => this.setState({ result: res.data }))
+            .then(res => {
+                console.log(res);
+                this.setState({ result: res.data });
+            })
             .catch(err => console.log(err));
     };
+
 
     componentDidMount() {
         this.searchEmployees()
@@ -35,13 +39,11 @@ class Table extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <Employee
-                        Picture={this.state.result.Picture}
-                        First={this.state.result.First}
-                        Last={this.state.result.Last}
-                        Phone={this.state.result.Phone}
-                        Email={this.state.result.Email}>
-                    </Employee>
+                    {console.log(this.state.result.results)}
+                    {/* {this.state.result.results.map((result) => (
+                        console.log(result)
+                    ))} */}
+
                 </tbody>
             </table>
         );
@@ -49,6 +51,14 @@ class Table extends React.Component {
 
 
 }
+
+{/* <Employee
+    Picture={this.state.result.Picture}
+    First={this.state.result.First}
+    Last={this.state.result.Last}
+    Phone={this.state.result.Phone}
+    Email={this.state.result.Email}>
+</Employee> */}
 
 
 
