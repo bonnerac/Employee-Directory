@@ -6,7 +6,7 @@ import API from '../../utils/API'
 
 class Table extends React.Component {
     state = {
-        result: []
+        results: []
 
     }
 
@@ -14,8 +14,8 @@ class Table extends React.Component {
         API.randomEmployee()
             .then(res => {
                 console.log(res.data.results);
-                this.setState({ result: res.data.results });
-                console.log(this.state.result)
+                this.setState({ results: res.data.results });
+                console.log(this.state.results)
             })
             .catch(err => console.log(err));
     };
@@ -38,10 +38,15 @@ class Table extends React.Component {
                 </thead>
                 <tbody>
 
-                    {this.state.result.map(result => (
-                        <h1 key={result}>
-                            {result.name}
-                        </h1>
+                    {this.state.results.map(result => (
+                        <tr>
+
+                            <td><img src={result.picture.thumbnail}></img></td>
+                            <td>{result.name.first}</td>
+                            <td>{result.name.last}</td>
+                            <td>{result.phone}</td>
+                            <td>{result.email}</td>
+                        </tr>
                     ))}
 
                 </tbody>
