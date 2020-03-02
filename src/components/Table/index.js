@@ -24,16 +24,24 @@ class Table extends React.Component {
         this.searchEmployees()
     }
 
+    onSort(event, sortKey) {
+
+        const data = this.state.results[0].name.first;
+        console.log(data)
+        // data.sort((a, b) => a[sortKey].localeCompare(b[sortKey]))
+        // this.setState({ data })
+    }
+
     render() {
         return (
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Picture</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Email</th>
+                        <th scope="col" onClick={e => this.onSort(e, 'firstname')}>First Name</th>
+                        <th scope="col" onClick={e => this.onSort(e, 'lastname')}>Last Name</th>
+                        <th scope="col" onClick={e => this.onSort(e, 'phone')}>Phone</th>
+                        <th scope="col" onClick={e => this.onSort(e, 'email')}>Email</th>
                     </tr>
                 </thead>
                 <tbody>
